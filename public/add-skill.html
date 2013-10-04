@@ -70,7 +70,7 @@
                             </fieldset>
                             <fieldset class="skill__fieldset skill__fieldset--related related" >
                                 <label class="related__label">Parent Skill</label>
-                                <select id="parent__skill" class="related__select" ng-model="skill.skparent" ng-options="p.name group by p.parent for p in skparents">
+                                <select id="parent__skill" class="related__select" ng-model="skill.parentID" ng-options="p.name group by p.parent for p in parentIDs">
                                     <option value="">-- chose skill --</option>
 
                                 </select>

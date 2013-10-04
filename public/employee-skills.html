@@ -57,58 +57,18 @@
                         <h1 class="content__header__title">Add a new skill</h1>
                     </header>
                     <article class="content__article">
-                        <table class="skillTree">
+                        <table class="skillTree" >
                             <thead class="skillTree__head">
-                                <tr class="skillTree__head__tr">
-                                    <th class="skillTree__th">Name
-                                    </th>
-                                    <th class="skillTree__th">ID
-                                    </th>
-                                    <th class="skillTree__th">DB ID
-                                    </th>
-                                    <th class="skillTree__th">Children
+                                <tr class="skillTree__head__tr" ng-controller="skillFactory.filteredSkills">
+                                    <th class="skillTree__th">Name {{balls}}
                                     </th>
                                     <th class="skillTree__th"></th>
+                                    <th ng-repeat="skill in skills">
+                                        {{skill.name}}
+                                    </th>
                                 </tr>
                             </thead>
-                            <tfoot class="skillTree__head">
-                                <tr class="skillTree__head__tr">
-                                    <th class="skillTree__th">Name
-                                    </th>
-                                    <th class="skillTree__th">ID
-                                    </th>
-                                    <th class="skillTree__th">
-                                        DB ID
-                                    </th>
-                                    <th class="skillTree__th">Children
-                                    </th>
-                                </tr>
-                            </tfoot>
-                            <tbody class="skillTree__tbody" ng-controller="getSkills">
-                                <tr class="skillTree__body__row skill" ng-repeat="skill in skills | orderBy:skill.children.length > 0" data-id="{{skill._id}}">
-                                    <td class="skill__name">
-                                        <input type="text" ng-model="skill.name" />
-                                    </td>
-                                    <td class="skill__id">
-                                        <input type="text" ng-model="skill.id"/>
-                                    </td>
-                                    <td class="skill__parent">
-                                        {{skill._id}}
-                                    </td>
-                                    <td class="skill__children">
-                                        <ul>
-                                            <li ng-repeat="child in skill.children">
-                                                {{child}}
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="skill__controls">
-                                        <input type="button" ng-click="update(skill)" value="update" />
-                                        <input type="button" ng-click="delete(skill)" value="delete"/>        
-                                    </td>
-                                </tr>
-                            </tbody>
-
+                     
                         </table>
                     </article>
                 </div>

@@ -8,11 +8,12 @@ function navigation($scope) {
 		results = new page('Employee Contact', 'results.html'),
 		contact = new page('Employee Addresses', 'address-list.html'),
 		addSkill = new page('Add Skill', 'add-skill.html'),
-		skillList = new page('Skills', 'skill-list.html')
+		empSkills = new page("Skill List", 'employee-skills.html'),
+		skillList = new page('Skills', 'skill-list.html'),
 		three = new page('Three Col', 'layout.html'),
 		one = new page('One Column', 'one-col.html'), 
 		two = new page("Two Column", 'two-col.html');
-	$scope.topNav = [index, add, results, contact, addSkill, skillList];
+	$scope.topNav = [empSkills, add, results, contact, addSkill, skillList];
 	$scope.skillNav = [addSkill, skillList];
 	$scope.leftNav = [three, two, one ];
 }

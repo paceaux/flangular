@@ -19,7 +19,7 @@
         <header class="globalHeader">
             <div class="globalHeader__branding" data-ng-controller="globalHeader">
                 <h1 class="globalHeader__branding__siteTitle">
-                    <img src="{{siteTitle}} "/>
+                    <img ng-src="{{siteTitle}} "/>
                 </h1>
                 <h2 class="globalHeader__branding__subTitle">
                     {{subHead}}
@@ -87,8 +87,11 @@
                                 <label class="address__label address__label--zip" for="address__input--zip">Zip</label>
                                 <input type="text" class="address__input address__input--zip" id="address__input--zip" data-ng-model="address.zip" />
                             </fieldset>
-                            <fieldset class="employee__fieldset employee__fieldset--skills skills">
-
+                            <fieldset class="employee__fieldset employee__fieldset--skills skills" data-ng-model="eSkills">
+                                <div class="skill" ng-repeat="eSkill in skills">
+                                    <label for="sk-{{eSkill._id}}">{{eSkill.name}}</label>
+                                    <input type="number" min="0" max="5" id="sk-{{eSkill._id}}" ng-model="eSkill.scale"/>
+                                </div>
 
                             </fieldset>
                             <fieldset class="employee__fieldset employee__fieldset--buttons buttons">
