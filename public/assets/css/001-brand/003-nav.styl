@@ -1,0 +1,32 @@
+headerBG = rgba(255, 255, 255, .1)
+
+nav
+	transitionize()
+	ul
+		padding: 0
+		margin: 0
+		li
+			a
+				display:block
+				padding: .5em 0
+				&:hover, &:focus
+					background: headerBG
+					text-decoration: none
+.nav
+	&--horizontal
+		a
+			color: white
+			font-size: .9em
+		.nav_list
+			&__item
+				&__link
+					color: white
+					font-size: .9em
+
+	&--vertical
+		a
+			color: #666
+		.nav__list
+			&__item
+				border-bottom: 1px solid #666
+

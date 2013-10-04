@@ -1,0 +1,98 @@
+//========== root values
+phi = 1.618
+fi = .618
+golden = 1.61803398875
+
+rootPx = 16px
+rootEm = 1em
+rootPercent = 100%
+rootPt = pxToPt(rootPx)
+
+//========== font functions
+hifi()
+	unit(phi, 'em')
+lofi()
+	unit(fi, 'em')
+rem(n)
+	rootEm * n
+
+pxToPt(n)
+	unit(.75 * n,pt)
+
+ptToPx(n)
+	ceil(unit(n * 1.333333333,px))
+
+ptToEm(n)
+	unit(ptToPx(n) / rootPx,em)
+
+emToPx(n)
+	unit(n * 16,px)
+
+pxToEm(n)
+	unit(n/rootEm,em)
+
+emToPercent(n)
+	(n/rootEm)%
+
+//========== variables
+//===== fonts
+baseFont = arial, sans-serif
+//1px == .75pt
+pt12 = 1em
+pt13 = 1.063em
+pt14 = 1.188em
+pt16 = 1.313em
+pt22 = 1.876em
+pt24 = 2em
+pt36 = 3em
+
+//===base colors
+white = #fff
+lightBlack = #231f20
+darkBlue = #1A3d6e
+liteBlue = #047CC0
+liteGray = #BBBDC0
+medGray1 = #939597
+medGray2 = #808284
+darkGray = #58585b
+
+//=== borders and backgrounds
+bgPromoSliderBlack = lightBlack
+
+makeTransparent(theColor)
+	rgba(theColor,.9)
+
+//=== text colors
+txtBodyOrange = #f27321
+txtBodyBlack = lightBlack
+txtBodyGray = medGray1
+txtBodyBlue = darkBlue
+txtHeaderBlue = darkBlue
+txtLinkBlue = #047CC0
+txtInputGray = medGray2
+txtNavGray = darkGray
+
+//==========effects
+transitionize()
+	transition: all .3s ease-in-out
+
+
+//========== Flex box vars
+vflex()
+	display: flex
+	flex-direction: column
+hflex()
+	display:flex
+	flex-direction:row
+betweenFlex()
+	justify-content: space-between
+	align-items: space-between	
+verticalFlex()
+	vflex()
+	betweenFlex()
+	flex-wrap: wrap
+horizontalFlex()
+	hflex()
+	betweenFlex()
+	flex-wrap: wrap
+

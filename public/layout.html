@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Add Employee - Draggable</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="assets/css/flex.main.css">
+        <script src="assets/js/lib/modernizr-2.6.2.min.js"></script>
+        <script src="assets/js/lib/angular.js"></script>
+        <script src="app/angles.js"></script>
+
+    </head>
+    <body>
+        <header class="globalHeader">
+            <div class="globalHeader__branding" data-ng-controller="globalHeader">
+                <h1 class="globalHeader__branding__siteTitle">
+                    <img src="{{siteTitle}} "/>
+                </h1>
+                <h2 class="globalHeader__branding__subTitle">
+                    {{subHead}}
+                </h2>
+            </div>
+            <form class="globalHeader__search">
+                <button class="globalHeader__search__submit">Search</button>
+                <input type="search" class="globalHeader__search__input" placeholder="search"/>
+            </form>
+            <nav class="globalHeader__topNav nav nav--horizontal">
+                <ul class="nav__list" data-ng-controller="navigation">
+                    <li class="nav__list__item" data-ng-repeat="page in topNav">
+                        <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+        <main class="main">
+            <aside class="main__sidebar sidebar sidebar--left">
+                <h1 class="main__sidebar__title">
+                    Demo Pages
+                </h1>
+                <nav class="sidebar__nav nav nav--vertical">
+               <nav class="sidebar__nav nav nav--vertical">
+                    <ul class="nav__list" data-ng-controller="navigation">
+                        <li class="nav__list__item" data-ng-repeat="page in leftNav">
+                            <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
+                        </li>
+                    </ul> 
+                </nav>
+            </aside>
+            <section class="main__content content">
+                <div class="content__wrap">
+                    <header class="content__header">
+                        <h1 class="content__header__title">Add a new employee</h1>
+                    </header>
+                    <article class="content__article">
+                        <form class="employee" ng-submit="submit()" ng-controller="addEmployee">
+                            <fieldset class="employee__fieldset employee__fieldset--name name">
+                            <legend class="employee__fieldset__legend">Name</legend>
+                                <label class="name__label name__label--first" for="name__input--first">First Name</label>
+                                <input type="text" class="name__input name__input--first" id="name__input--first"  ng-model="name.first"/>
+                                <label class="name__label name__label--last" for="name__input--last">Last Name</label>
+                                <input type="text" class="name__input name__input--last" id="name__input--last" ng-model="name.last"/>
+                            </fieldset>
+                            <fieldset class="employee__fieldset employee__fieldset--contact contact">
+                                <legend class="employee__fieldset__legend">Contact Info</legend>
+                                <label class="contact__label contact__label--phone" for="contact__input--phone" >Phone Number</label>
+                                <input type="tel" class="contact__input contact__input--phone" id="contact__input--phone" data-ng-model="contact.phone"/>
+                                
+                                <label class="contact__label contact__label--email" for="contact__input--email" >Email</label>
+                                <input type="email" class="contact__input contact__input--email" id="contact__input--email" data-ng-model="contact.email" />
+
+                                <label class="contact__label contact__label--skype" for="contact__input--skype">Skype</label>
+                                <input type="text" class="contact__input contact__input--skype" id="contact__input--skype" data-ng-model="contact.skype"/>
+                            </fieldset>
+                            <fieldset class="employee__fieldset employee__fieldset--address address">
+                                <legend class="employee__fieldset__legend">Address</legend>
+                                <label class="address__label address__label--street" for="address__input--street">Street Address</label>
+                                <input type="text" class="address__input address__input--street" id="address__input--street" data-ng-model="address.street" />
+                                <label class="address__label address__label--city" for="address__input--city">city</label>
+                                <input type="text" class="address__input address__input--city" id="address__input--city" data-ng-model="address.city" />
+                                <label class="address__label address__label--state" for="address__input--state">state</label>
+                                <input type="text" class="address__input address__input--state" id="address__input--state" data-ng-model="address.state"/>
+                                <label class="address__label address__label--zip" for="address__input--zip">Zip</label>
+                                <input type="text" class="address__input address__input--zip" id="address__input--zip" data-ng-model="address.zip" />
+                            </fieldset>
+                            <fieldset class="employee__fieldset employee__fieldset--buttons buttons">
+                                <button id="submit" class="buttons__submit">Submit</button>                               
+                            </fieldset>
+                        </form>
+                    </article>
+                </div>
+                <aside class="content__sidebar sidebar sidebar--right">
+                    <h1>another sidebar</h1>
+                </aside>
+            </section>
+        </main>
+        <footer class="globalFooter" ng-controller="globalIncludes">
+            <div class="globalFooter__wrapper" ng-include="footer"></div>
+        </footer>
+        <div class="scriptFooter">
+            <script type="text/javascript" src="app/controllers.js"></script>
+            <script type="text/javascript" src="assets/js/lib/jq.js"></script>
+            <script type="text/javascript" src="assets/js/draggie.js"></script>
+
+        </div>
+    </body>
+</html>

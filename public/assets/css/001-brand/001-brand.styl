@@ -1,0 +1,116 @@
+html
+	font-size: rem(1)
+	background: #2e2f32
+
+body
+	color: txtBodyBlack
+	font-size: rem(1)
+	line-height: phi
+	padding: 0 0 0 0
+	background: white
+
+h1, h2, h3, h4, h5, h6, p
+	color: txtBodyBlack
+	line-height: phi
+
+h1, h2, h3, h4, h5, h6, strong, th
+	font-weight: bold
+h1
+	font-size: 1.618em
+h2
+	font-size: 1.25em
+	color: txtNavGray
+h3
+	font-size: 1.15em
+	color: txtBodyOrange
+h4
+	font-size: ptToEm(16)
+	color: txtBodyBlue
+h5, h6
+	font-size: ptToEm(14)
+
+p
+	color: txtBodyBlack
+	margin: unit(fi, 'em') 0
+
+header, main, footer
+	padding: 0 lofi()
+a
+	color: rgb(4, 124, 192)
+	text-decoration: none
+	transitionize()
+	&:hover, &:focus, &:active
+		text-decoration: underline
+		transitionize()
+legend
+	font-size: 1em
+	line-height: 1
+
+form
+	border: none
+	outline: none
+	padding: 0 .25em
+fieldset, input, button, label, legend
+	transitionize()
+
+fieldset
+	border: .125em solid rgb(225, 225, 225)
+	border-radius: .125em
+input, button
+	font-size: 1em
+	line-height: 1.618
+	padding: 0 .25em
+	height: 2em
+	margin: 0
+	border: .125em solid txtBodyBlack
+	border-radius: .25em
+	&:hover, &:focus
+		outline: none
+		transitionize()
+[type="text"],
+[type="tel"],
+[type="search"],
+[type="email"],
+[type="password"]
+	color: liteGray
+	padding: 0 .25em
+	background: white
+	border: .125em solid rgba(4, 124, 192, 1)
+	&:hover
+		color: medGray1
+		border-color: rgba(5, 154, 240,1)
+	&:active, &:focus
+		color: txtBodyBlack
+
+button
+	background: rgb(4, 124, 192)
+	color: white
+	height: 2em
+	border: .125em solid rgba(4, 124, 192, 1)
+	&:hover
+		background: rgb(5, 154, 240)
+		border-color: @background
+
+table
+	border: .325em solid gray
+	width: 100%
+	th, td
+		text-align: left
+	thead
+		border-bottom: .125em solid gray
+		th
+			font-size: 1.25em
+	th
+		font-weight: bold
+	tbody
+		background: rgb(240, 245, 235)
+		tr:nth-child(even)
+			background: rgba(240, 245, 235, .9)
+		tr:nth-child(odd)
+			background: rgba(255, 255, 255, .5)
+.hidden
+	visibility: collapse
+
+
+
+

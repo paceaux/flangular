@@ -1,0 +1,62 @@
+html
+  font-size: 1em
+  line-height: 1.618
+  width: 100%
+  height: 100%
+
+body
+  width: 50em
+  height: 100%
+  margin: 0 auto
+
+ul, ol
+  list-style-type: none
+  font-size: 1em
+
+body
+  > header
+      height: 9em
+
+header
+  >
+    hgroup
+      float:left
+  nav
+    height: 1.50em
+    &.utility
+      float:right
+.navWrapper
+  clear:both
+  height: 3em
+
+nav
+  &.primary
+    &.right
+      float:right
+      width: 40%
+      ~ nav.primary.left
+        float:left
+        width: 40%
+    &.left
+      width: 100%
+  ul, ol
+    list-style-type: none
+    margin: 0
+  li
+    float:left
+    height: 1.50em
+    margin: 0 .5em 
+  &.right li
+    float:right
+.side
+  nav
+    padding: .5em
+    li
+      display:block
+      float:none
+      width: 90%
+      margin: 1em .5em
+  
+
+
+

@@ -1,0 +1,84 @@
+html
+	display:block
+body
+	width: 80%
+	margin: 0 auto
+.globalHeader
+	width: 100%
+	&__branding
+		float:left
+		width: 10em
+		height: 4rem
+		&__siteTitle, &__subTitle
+			margin: 0
+	&__search
+		float:right
+		height: 2em
+		width: 16em
+		&__input
+			width: 61.803398875%
+			height: 2rem
+	&__topNav
+		width: 100%
+		clear: both
+.main
+	width: 98%
+	clear:both
+	&::before
+		content: ''
+		display: block
+	&::after
+		visibility: hidden;
+		display: block;
+		height: 0;
+		clear: both;
+.globalFooter
+	clear:both
+	&__wrapper
+		width: 98%
+	&__title
+		float:left
+	&__contact
+		float:right
+.sidebar
+	float:left
+	width: 20%
+	height: 100%
+.nav
+	display:block
+	ul, li
+		list-style-type: none
+	&__list
+		justify-content: space-around
+		align-items:stretch
+		&__item
+			flex-grow:1
+			display:flex
+			flex-direction:row
+			align-items:stretch
+			justify-content:center
+			&__link
+				flex-grow:1
+	&--horizontal
+		flex-direction:horizontal
+		.nav__list
+			flex-grow: 1
+			horizontalFlex()
+			&__item
+				&__link
+					text-align:center
+	&--vertical
+		flex-direction: vertical
+		.nav__list
+			verticalFlex()
+			&__item
+				&__link
+					padding-left: .618em
+.content
+	float:right 
+	width: 80%
+	&__wrap
+		height: 100%
+		width: 80%
+
+

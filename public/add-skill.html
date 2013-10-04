@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Add skill</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="assets/css/flex.main.css">
+        <script src="assets/js/lib/modernizr-2.6.2.min.js"></script>
+        <script src="assets/js/lib/angular.js"></script>
+        <script src="app/angles.js"></script>
+
+    </head>
+    <body>
+        <header class="globalHeader">
+            <div class="globalHeader__branding" data-ng-controller="globalHeader">
+                <h1 class="globalHeader__branding__siteTitle">
+                    <img ng-src="{{siteTitle}} "/>
+                </h1>
+                <h2 class="globalHeader__branding__subTitle">
+                    {{subHead}}
+                </h2>
+            </div>
+            <form class="globalHeader__search">
+                <button class="globalHeader__search__submit">Search</button>
+                <input type="search" class="globalHeader__search__input" placeholder="search"/>
+            </form>
+            <nav class="globalHeader__topNav nav nav--horizontal">
+                <ul class="nav__list" data-ng-controller="navigation">
+                    <li class="nav__list__item" data-ng-repeat="page in topNav">
+                        <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+        <main class="main">
+            <aside class="main__sidebar sidebar sidebar--left">
+                <h1 class="main__sidebar__title">
+                    Demo Pages
+                </h1>
+               <nav class="sidebar__nav nav nav--vertical">
+                    <ul class="nav__list" data-ng-controller="navigation">
+                        <li class="nav__list__item" data-ng-repeat="page in leftNav">
+                            <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
+                        </li>
+                    </ul>
+                </nav> 
+            </aside>
+            <section class="main__content content">
+                <div class="content__wrap">
+                    <header class="content__header">
+                        <h1 class="content__header__title">Add a new skill</h1>
+                    </header>
+                    <article class="content__article">
+                        <form class="skill" ng-submit="submit()" ng-controller="addSkill">
+                            <fieldset class="skill__fieldset skill__fieldset--skillname skillname">
+                                <label for="skillname__input" class="skillname__label">
+                                    Name of Skill
+                                </label>
+                                <input type="text" class="skillname__input" id="skillname__input" ng-model="skill.name">
+                                <label for="skillname__id">
+                                    Skill ID
+                                </label>
+                                <input type="text" class="skillname__id" id="skillname__id" ng-model="skill.id" />
+                            </fieldset>
+                            <fieldset class="skill__fieldset skill__fieldset--related related" >
+                                <label class="related__label">Parent Skill</label>
+                                <select id="parent__skill" class="related__select" ng-model="skill.skparent" ng-options="p.name group by p.parent for p in skparents">
+                                    <option value="">-- chose skill --</option>
+
+                                </select>
+                            </fieldset>
+                            <fieldset class="skill__fieldset skill__fieldset--buttons buttons">
+                                <button id="submit" class="buttons__submit">Submit</button>                               
+                            </fieldset>
+                        </form>
+                    </article>
+                </div>
+
+            </section>
+        </main>
+        <footer class="globalFooter" ng-controller="globalIncludes">
+            <div class="globalFooter__wrapper" ng-include="footer"></div>
+        </footer>
+        <div class="scriptFooter">
+            <script type="text/javascript" src="app/controllers.js"></script>
+        </div>
+    </body>
+</html>

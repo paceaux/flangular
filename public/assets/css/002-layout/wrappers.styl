@@ -1,0 +1,36 @@
+main
+	&:after
+		content: '';
+		display:block
+		height: 0
+		clear:both
+#page
+	width: inherit
+	&:after
+		content:"";
+		display:block
+		height:0;
+		clear:both
+	&.right-col
+		> section
+			&.side
+				float:right
+body
+	> footer
+		float:left
+		display:block
+		width: inherit
+		height: 6em
+		margin-top: 2em
+section
+	&.main 
+		float:right
+		height: 100%
+		width: 100%
+	&.side
+		+ section.main
+			width: 75%
+.side
+	width: 20%
+	padding: 2.5%
+	height: auto

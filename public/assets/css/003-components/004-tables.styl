@@ -1,0 +1,42 @@
+.contactList, .skillTree
+	font-size: .9em
+	width: 98%
+	&__th
+		font-size: 1.3vw
+		&__filter[type]
+			color: inherit
+			font-size: .8em
+			background:transparent
+			border: none
+			width: 98%
+
+.person, .skill
+	td
+		height: auto
+	&__contact
+		&--phone
+			font-size: .8em
+		&--email
+			flex-shrink: 0
+			flex-basis: 14vw
+	&__controls
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: space-around
+		flex-wrap: wrap
+		flex-grow: 2
+		input, button
+			flex-basis: 4em
+			font-size: .8em
+			margin: .1em 0
+	&__name, &__contact, &__address, &__id, &__parent
+		input
+			font-size: .7em
+			line-height: 1
+			color: inherit
+			padding: 0
+			width: 98%
+			height: inherit
+			border: none
+			background: transparent

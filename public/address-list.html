@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Employee results page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="assets/css/flex.main.css">
+        <script src="assets/js/lib/modernizr-2.6.2.min.js"></script>
+        <script src="assets/js/lib/angular.js"></script>
+        <script src="app/angles.js"></script>
+    </head>
+    <body>
+        <header class="globalHeader">
+            <div class="globalHeader__branding" data-ng-controller="globalHeader">
+                <h1 class="globalHeader__branding__siteTitle">
+                    <img src="{{siteTitle}} "/>
+                </h1>
+                <h2 class="globalHeader__branding__subTitle">
+                    {{subHead}}
+                </h2>
+            </div>
+            <form class="globalHeader__search">
+                <button class="globalHeader__search__submit">Search</button>
+                <input type="search" class="globalHeader__search__input" placeholder="search"/>
+            </form>
+            <nav class="globalHeader__topNav nav nav--horizontal">
+                <ul class="nav__list" data-ng-controller="navigation">
+                    <li class="nav__list__item" data-ng-repeat="page in topNav">
+                        <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main">
+            <section class="main__content content">
+                <div class="content__wrap">
+                    <header class="content__header">
+                        <h1 class="content__header__title">List of Employees</h1>
+                    </header>
+                    <article class="content__article" >
+                        <table class="contactList contactList--address" ng-controller="getContactList">
+                            <thead class="contactList__thead">
+                                <tr class="contactList__thead__row">
+                                    <th class="contactList__th">
+                                        <input class="contactList__th__filter" type="text" data-ng-model="q.name.first" placeholder="First Name">
+                                    </th>
+                                    <th class="contactList__th">
+                                        <input class="contactList__th__filter" type="text" data-ng-model="q.name.last" placeholder="Last Name">
+                                    </th>
+                                    <th class="contactList__th" placeholder="Street">Street</th>
+                                    <th class="contactList__th">City</th>
+                                    <th class="contactList__th">State</th>
+                                    <th class="contactList__th">ZIP</th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="contactList__tbody" >
+                                <tr ng-repeat="result in results | filter: {name.first : q.name.first} | filter:{name.last :  q.name.last} | orderBy: 'name.last'" class="contactList__body__row person" data-id="{{result._id}}">
+                                    <td class="person__name person__name--first">
+                                        {{result.name.first}}
+                                    </td>
+                                    <td class="person__name person__name--last">
+                                        {{result.name.last}}
+                                    </td>
+                                    <td class="person__contact person__contact--street">
+                                        <input type="text" ng-model="result.address.street" />
+                                    </td>
+                                    <td class="person__contact person__contact--city" >
+                                        <input type="text" ng-model="result.address.city" />
+                                    </td>
+                                    <td class="person__contact person__contact--state" >
+                                        <input type="text" ng-model="result.address.state" />
+                                    </td>
+                                    <td class="person__contact person__contact--zip" >
+                                        <input type="text" ng-model="result.address.zip" />
+                                    </td>
+                                    <td class="person__controls">
+                                        <input type="button" ng-click="update(result)" value="update"/>
+                                        <input type="button" ng-click="delete(result)" value="delete"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="contactList__tfoot">
+                                <tr class="contactList__tfoot__row">
+                                    <th class="contactList__th">First Name</th>
+                                    <th class="contactList__th">Last Name</th>
+                                    <th class="contactList__th">Street</th>
+                                    <th class="contactList__th">City</th>
+                                    <th class="contactList__th">State</th>
+                                    <th class="contactList__th">ZIP</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="globalFooter" ng-controller="globalIncludes">
+            <div class="globalFooter__wrapper" ng-include="footer"></div>
+        </footer>
+        <div class="scriptFooter">
+            <script type="text/javascript" src="app/controllers.js"></script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+/*DEMO CONTROLS */
+.controls
+  position:fixed
+  padding: .5em
+  background: #e1e1e1
+  top:0
+  left: 300px
+
+.twoColSelect
+  display:none  
+    
+
+#twoCol:checked ~ .twoColSelect
+  display:block
+
+.delItem
+  &__button
+    font-size: 1rem
+    visibility:hidden
+    float:left
+    position:absolute  
+    color: #555
+    text-align:center
+    padding: .5rem
+    width: .75rem
+    margin: -1.5em 0 0 -1.5em
+    border-radius:50%
+    background: white
+    box-shadow: .15em .15em 1px rgba(60,60,60,.4)
+  &:hover .delItem__button
+    visibility: visible
+
+span.stack
+  visibility:hidden
+  float:left
+  position:absolute
+  color: #555
+  text-align:center
+  padding: .5em
+  margin: -1.5em 0 0 -1.5em
+  background: white
+  box-shadow: -.15em .25em .125em rgba(100,100,100,.5)
+
+.classable:hover span.stack
+  visibility:visible

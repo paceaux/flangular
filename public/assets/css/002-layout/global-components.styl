@@ -1,0 +1,17 @@
+article
+	padding: 2.5%
+	float:left
+	width: 90%
+	margin: 1em 0
+section
+	&.main
+		> 
+			header, aside.features, article, footer
+				float:left
+				padding: 2.5%
+				width: 95%
+aside
+	&.right
+		~ 
+			header, footer, article, aside.features
+				width: 70%

@@ -1,0 +1,123 @@
+html {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+body {
+  flex-basis: 80%;
+}
+.globalHeader {
+  justify-content: space-between;
+  align-items: space-between;
+  flex-wrap: wrap;
+  width: calc(100% - (.618em * 2));
+  align-self: flex-start;
+}
+.globalHeader__branding {
+  order: 1;
+  flex-grow: 1;
+  width: 10rem;
+  height: 4rem;
+}
+.globalHeader__branding__siteTitle,
+.globalHeader__branding__subTitle {
+  margin: 0;
+}
+.globalHeader__search {
+  order: 2;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: no-wrap;
+  height: 4rem;
+  width: 16rem;
+  width: 26vw;
+}
+.globalHeader__search__input {
+  order: 1;
+  width: 61.803398875%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 2rem;
+}
+.globalHeader__search__submit {
+  order: 2;
+  flex-grow: 1;
+}
+.globalHeader__topNav {
+  order: 3;
+  flex-basis: 100%;
+  flex-grow: 0;
+}
+.main {
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  flex-basis: 80%;
+  width: calc(100% - (.618em * 2));
+}
+.globalFooter__wrapper {
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  flex-basis: 10vh;
+  width: calc(100% - (.618em * 2));
+  align-self: flex-end;
+}
+.globalFooter__contact {
+  align-items: flex-end;
+}
+.sidebar {
+  flex-basis: 20%;
+  height: 100%;
+  flex-grow: 1;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav ul,
+.nav li {
+  list-style-type: none;
+}
+.nav__list {
+  justify-content: space-around;
+  align-items: stretch;
+}
+.nav__list__item {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+}
+.nav__list__item__link {
+  flex-grow: 1;
+}
+.nav--horizontal {
+  flex-direction: horizontal;
+}
+.nav--horizontal .nav__list {
+  flex-grow: 1;
+}
+.nav--horizontal .nav__list__item__link {
+  text-align: center;
+}
+.nav--vertical {
+  flex-direction: vertical;
+}
+.nav--vertical .nav__list__item__link {
+  padding-left: 0.618em;
+}
+.content {
+  flex-basis: 80%;
+  flex-grow: 1;
+}
+.content__wrap {
+  height: 100%;
+  flex-basis: 80%;
+  flex-grow: 1;
+}

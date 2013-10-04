@@ -1,0 +1,23 @@
+.employee
+	hflex()
+	flex-wrap: wrap
+	&__fieldset
+		vflex()
+		flex-grow: 1
+		label, input
+			width: 95%
+		&--name
+			order: -3
+		&--contact
+			order: -2
+		&--address
+			order: -1
+		&--buttons
+			flex-basis: 100%
+			border: none
+
+	&__legend
+		display:inline-flex
+.name
+	&__label
+		order: 1

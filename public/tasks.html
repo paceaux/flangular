@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>To Do List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="assets/css/flex.main.css">
+        <script src="assets/js/lib/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <header class="globalHeader">
+            <div class="globalHeader__branding">
+                <h1 class="globalHeader__branding__siteTitle">
+                    Things to Cover
+                </h1>
+            </div>
+            
+        </header>
+        <main class="main">
+            <section class="main__content content">
+                <div class="content__wrap">
+                    <article class="content__article" >
+                        <form class="agenda" >
+                        <fieldset id="list-1" class="itemList">
+                        <legend>Big Agenda</legend>
+                        <label for="list-1-item-1">Intro</label>
+                        <input type="checkbox" name="list-1" id="list-1-item-1" class="listBox" />
+                        <label for="list-1-item-2">Tools</label>
+                        <input type="checkbox" name="list-1" id="list-1-item-2" class="listBox" />
+                        <label for="list-1-item-3">Techniques</label>
+                        <input type="checkbox" name="list-1" id="list-1-item-3" class="listBox" />
+                        <label for="list-1-item-4">Templates</label>
+                        <input type="checkbox" name="list-1" id="list-1-item-4" class="listBox" />
+                        <label for="list-1-item-5">Questions</label>
+                        <input type="checkbox" name="list-1" id="list-1-item-5" class="listBox" />
+
+                    </fieldset>
+                        <fieldset id="list-2" class="itemList">
+                        <legend>Intro // Tools</legend>
+                        <label for="list-2-item-1">What's up at NW</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-1" class="listBox" />
+                        <label for="list-2-item-2">Coding for the future</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-2" class="listBox" />
+                        <label for="list-2-item-3">Stylus</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-3" class="listBox" />
+                        <label for="list-2-item-4">features</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-4" class="listBox" />
+                        <label for="list-2-item-5">setting it up</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-5" class="listBox" />
+                        <label for="list-2-item-6">Node.js</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-6" class="listBox" />
+                        <label for="list-2-item-7">Node Packages</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-7" class="listBox" />
+                        <label for="list-2-item-8">Grunt</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-8" class="listBox" />
+                        <label for="list-2-item-9">Grunt Features</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-9" class="listBox" />
+                        <label for="list-2-item-10">Setting it Up</label>
+                        <input type="checkbox" name="list-2" id="list-2-item-10" class="listBox" />
+                    </fieldset>
+                        <fieldset id="list-3" class="itemList">
+                        <legend>Techniques</legend>
+                        <label for="list-3-item-1">Architecting the CSS</label>
+                        <input type="checkbox" name="list-3" id="list-3-item-1" class="listBox" />
+                        <label for="list-3-item-2">BEM</label>
+                        <input type="checkbox" name="list-3" id="list-3-item-2" class="listBox" />
+                        <label for="list-3-item-3">BEM - breakdown</label>
+                        <input type="checkbox" name="list-3" id="list-3-item-3" class="listBox" />
+                        <label for="list-3-item-4">BEM - Madness</label>
+                        <input type="checkbox" name="list-3" id="list-3-item-4" class="listBox" />
+                        <label for="list-3-item-5">BEM Hybridization</label>
+                        <input type="checkbox" name="list-3" id="list-3-item-4" class="listBox" />
+
+                    </fieldset>
+<fieldset id="list-4" class="itemList">
+                        <legend>Templates (Demo Time)</legend>
+                        <label for="list-4-item-1">Bust out the Demo</label>
+                        <input type="checkbox" name="list-4" id="list-4-item-1" class="listBox" />
+                        <label for="list-4-item-2">Explain the setup</label>
+                        <input type="checkbox" name="list-4" id="list-4-item-2" class="listBox" />
+                        <label for="list-4-item-3">one to many columns</label>
+                        <input type="checkbox" name="list-4" id="list-4-item-3" class="listBox" />
+                        <label for="list-4-item-4">More?</label>
+                        <input type="checkbox" name="list-4" id="list-4-item-4" class="listBox" />
+
+                    </fieldset>
+                </form>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+        <footer class="globalFooter" ng-controller="globalIncludes">
+            <div class="globalFooter__wrapper" ng-include="footer"></div>
+        </footer>
+        <div class="scriptFooter">
+            <script type="text/javascript" src="app/controllers.js"></script>
+            <script type="text/javascript" src="assets/js/lib/jq.js"></script>
+            <script type="text/javascript" src="assets/js/progress.js"></script>
+            <script type="text/javascript" src="assets/js/editable.js"/></script>
+            <script type="text/javascript">
+            $('label').editable()
+            </script>
+            <script type="text/javascript" src="assets/js/form_protector.js"></script>
+            <script type="text/javascript">
+                $('#list-1').forminator('checkbox')
+            </script>
+        </div>
+    </body>
+</html>

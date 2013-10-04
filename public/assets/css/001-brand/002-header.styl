@@ -1,0 +1,26 @@
+headerBG = rgba(255, 255, 255, .1)
+headerBorder = rgba(255, 255, 255, .4)
+headerBorderA = rgba(200, 200, 200, .5)
+
+
+.globalHeader
+	padding-top: .618em
+	background: rgba(30,65, 95, 1)
+	&__branding
+		margin-bottom: .618rem
+	&__search
+		&__input
+			color: rgb(90, 90, 90, .9)
+			background: headerBG
+			border-radius: 0
+			border-color: headerBorder
+			&:hover, &:focus, &:active
+				border-color: headerBorderA
+		&__submit
+			color: rgb(90, 90, 90, .9)
+			background: headerBorder
+			border-radius: 0
+			border-color: headerBorder
+			&:hover, &:focus, &:active
+				background: @background
+				border-color: headerBorderA

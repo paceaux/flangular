@@ -1,0 +1,26 @@
+{
+  "name": "flangular",
+  "version": "0.1.0",
+  "author" : "Paceaux <me@frankmtaylor.com>",
+  "description": "a people management tool built on node, delivered with angular.js, and laid out in flexbox",
+  "devDependencies": {
+    "nib" : "~1.0.1",
+    "stylus": "~0.37.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-stylus": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-cssmin": "~0.6.1"
+  },
+  "main": "Gruntfile.js",
+  "repository" : {
+    "type" : "git",
+    },
+  "keywords": [
+    "cli",
+    "node",
+    "angular",
+    "tz-skills",
+    "projects"
+  ],
+  "license": "BSD"
+}
