@@ -17,9 +17,9 @@
     </head>
     <body>
         <header class="globalHeader">
-            <div class="globalHeader__branding" data-ng-controller="globalHeader">
+            <div class="globalHeader__branding" data-ng-controller="website.globalHeader">
                 <h1 class="globalHeader__branding__siteTitle">
-                    <img src="{{siteTitle}} "/>
+                    <img ng-src="{{siteTitle}} "/>
                 </h1>
                 <h2 class="globalHeader__branding__subTitle">
                     {{subHead}}
@@ -30,7 +30,7 @@
                 <input type="search" class="globalHeader__search__input" placeholder="search"/>
             </form>
             <nav class="globalHeader__topNav nav nav--horizontal">
-                <ul class="nav__list" data-ng-controller="navigation">
+                <ul class="nav__list" data-ng-controller="website.navigation">
                     <li class="nav__list__item" data-ng-repeat="page in topNav">
                         <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
                     </li>
@@ -45,7 +45,7 @@
                 </h1>
                 <nav class="sidebar__nav nav nav--vertical">
                <nav class="sidebar__nav nav nav--vertical">
-                    <ul class="nav__list" data-ng-controller="navigation">
+                    <ul class="nav__list" data-ng-controller="website.navigation">
                         <li class="nav__list__item" data-ng-repeat="page in leftNav">
                             <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
                         </li>
@@ -58,7 +58,7 @@
                         <h1 class="content__header__title">Add a new employee</h1>
                     </header>
                     <article class="content__article">
-                        <form class="employee" ng-submit="submit()" ng-controller="addEmployee">
+                        <form class="employee" ng-submit="submit()" ng-controller="employeeFactory.addEmployee">
                             <fieldset class="employee__fieldset employee__fieldset--name name">
                             <legend class="employee__fieldset__legend">Name</legend>
                                 <label class="name__label name__label--first" for="name__input--first">First Name</label>

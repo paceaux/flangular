@@ -17,7 +17,7 @@
     </head>
     <body>
         <header class="globalHeader">
-            <div class="globalHeader__branding" data-ng-controller="globalHeader">
+            <div class="globalHeader__branding" data-ng-controller="website.globalHeader">
                 <h1 class="globalHeader__branding__siteTitle">
                     <img ng-src="{{siteTitle}} "/>
                 </h1>
@@ -30,7 +30,7 @@
                 <input type="search" class="globalHeader__search__input" placeholder="search"/>
             </form>
             <nav class="globalHeader__topNav nav nav--horizontal">
-                <ul class="nav__list" data-ng-controller="navigation">
+                <ul class="nav__list" data-ng-controller="website.navigation">
                     <li class="nav__list__item" data-ng-repeat="page in topNav">
                         <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
                     </li>
@@ -44,7 +44,7 @@
                     Demo Pages
                 </h1>
                <nav class="sidebar__nav nav nav--vertical">
-                    <ul class="nav__list" data-ng-controller="navigation">
+                    <ul class="nav__list" data-ng-controller="website.navigation">
                         <li class="nav__list__item" data-ng-repeat="page in leftNav">
                             <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
                         </li>
@@ -57,7 +57,7 @@
                         <h1 class="content__header__title">Add a new skill</h1>
                     </header>
                     <article class="content__article">
-                        <form class="skill" ng-submit="submit()" ng-controller="addSkill">
+                        <form class="skill" ng-submit="submit()" ng-controller="skillFactory.addSkill">
                             <fieldset class="skill__fieldset skill__fieldset--skillname skillname">
                                 <label for="skillname__input" class="skillname__label">
                                     Name of Skill

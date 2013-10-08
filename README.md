@@ -9,19 +9,20 @@ License: copyright 2013 Frank M. Taylor. All rights reserved
 ## To do:
 + Mongo
 	+ Person collection
-		+ Need skills objecT
-			* skill rank/scale
-		+ job title field maybe?
+		* job title field maybe?
 	+ Skills collection
-		+ need a skill object
-			* name--DONE
-			* subskills
+		* need a filter for skills that's only ones with children (aka parents)
+
 + Angular
 	* better sorting on the "results " page
 	* some sort of confirmation on the index page that stuff submitted
-+ Frontend / CSS
-	* need functionality to add skills to a person, 
-	* work out how we're going to view a huge ass table that goes really wide w/ tons of skills
+	* need the skills page to  loop over only skills with children, and to do an interior loop to show those children. 
+
++ Design/UI
+	* work out how we're going to view a huge  table that goes really wide w/ tons of skills
+
+## Bugs
++ Add skills page : there's weirdness when adding a skill, and then a child skill in the same session on the "add-skill page" Stuff doesn't always get added to the parent
 
 
 

@@ -17,7 +17,7 @@
     </head>
     <body>
         <header class="globalHeader">
-            <div class="globalHeader__branding" data-ng-controller="globalHeader">
+            <div class="globalHeader__branding" data-ng-controller="website.globalHeader">
                 <h1 class="globalHeader__branding__siteTitle">
                     <img ng-src="{{siteTitle}} "/>
                 </h1>
@@ -30,7 +30,7 @@
                 <input type="search" class="globalHeader__search__input" placeholder="search"/>
             </form>
             <nav class="globalHeader__topNav nav nav--horizontal">
-                <ul class="nav__list" data-ng-controller="navigation">
+                <ul class="nav__list" data-ng-controller="website.navigation">
                     <li class="nav__list__item" data-ng-repeat="page in topNav">
                         <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
                     </li>
@@ -44,7 +44,7 @@
                     Demo Pages
                 </h1>
                <nav class="sidebar__nav nav nav--vertical">
-                    <ul class="nav__list" data-ng-controller="navigation">
+                    <ul class="nav__list" data-ng-controller="website.navigation">
                         <li class="nav__list__item" data-ng-repeat="page in leftNav">
                             <a class="nav__list__item__link" href="{{page.url}}">{{page.title}}</a>
                         </li>
@@ -59,8 +59,9 @@
                     <article class="content__article">
                         <table class="skillTree" >
                             <thead class="skillTree__head">
-                                <tr class="skillTree__head__tr" ng-controller="skillFactory.filteredSkills">
-                                    <th class="skillTree__th">Name {{balls}}
+                                <tr class="skillTree__head__tr" ng-controller="skillFactory.getSkillNames">
+                                    <th class="skillTree__th">
+                                        Name
                                     </th>
                                     <th class="skillTree__th"></th>
                                     <th ng-repeat="skill in skills">
