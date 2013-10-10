@@ -23,15 +23,22 @@ app.get('/fakerton', fakerton.data );
 
 app.post('/skills/add', skills.controls.add);
 app.get('/skills/get', skills.query.all);
+app.get('/skills/get/filter',skills.query.filter);
+app.get('/skills/get/tree', skills.query.tree);
 app.delete('/skills/del', skills.controls.remove);
 app.put('/skills/put', skills.controls.update);
+app.put('/skills/edit', skills.controls.edit);
+
 app.get('/employees/get', employees.query.all);
 app.get('/employees/get/contact', employees.query.contact)
 app.get('/employees/get/address', employees.query.address)
 app.get('/employees/get/name', employees.query.name);
-app.post('/employees/add', employees.addEmployee);
-app.delete('/employees/del', employees.delEmployee);
-app.put('/employees/put', employees.updateEmployee);
+app.get('/employees/get/tree', employees.query.tree);
+
+app.post('/employees/add', employees.controls.add);
+app.delete('/employees/del', employees.controls.remove);
+app.put('/employees/put', employees.controls.update);
+app.put('/employees/edit/',employees.controls.edit);
 
 app.listen(port)
 console.log('listening on port %s', port);

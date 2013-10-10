@@ -57,20 +57,14 @@
                         <h1 class="content__header__title">Add a new skill</h1>
                     </header>
                     <article class="content__article">
-                        <table class="skillTree" >
-                            <thead class="skillTree__head">
-                                <tr class="skillTree__head__tr" ng-controller="skillFactory.getSkillNames">
-                                    <th class="skillTree__th">
-                                        Name
-                                    </th>
-                                    <th class="skillTree__th"></th>
-                                    <th ng-repeat="skill in skills">
-                                        {{skill.name}}
-                                    </th>
-                                </tr>
-                            </thead>
-                     
-                        </table>
+                        <ul ng-controller="skillFactory.getTree">
+                            <li ng-repeat="skill in skills">
+                                <h4>{{skill.name}}</h4>
+                                <ul ng-if="skill.children">
+                                    <li ng-repeat="child in skill.childSkills">{{child.name}}</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </article>
                 </div>
             </section>

@@ -5,8 +5,84 @@ var factory = require('../app/personFactory'),
  db = require("mongojs").connect(databaseUrl, collections);
 
 exports.query = {
+	filters: {
+		nokids : {
+			children: {
+				$size: 0
+			}
+		}, 
+		kids:  {
+			children: {
+				$ne: []
+			}
+		},
+		noId: {
+			id:0
+		}, 
+		all: {}
+	},
+	queryObj: function(query, cb) {
+		db.skills.find(query).toArray(cb);
+	},
+	parentLoop: function(items, res) {
+		var parents = [],
+			orphans = [];
+		//separate the entire list into parents and orphans
+		items.forEach(function(branch, branchI){
+			if(branch.children.length > 0){
+				branch.childSkills = [];
+				parents.push(branch);
+			} else {
+				orphans.push(branch);
+			}
+		});
+		var orphansL = orphans.length, 
+			parentsL = parents.length;
+		//loop through the orphan list
+		//we want to see if the orphans are actually children of the parents
+		while(orphansL--){
+			var orphan = orphans[orphansL],
+				orphanId = orphan._id
+			//w/i the orphan loop, loops the parents
+			parents.forEach(function(parent, parentI) {
+				//loop the children of the parents
+				parent.children.forEach(function(child, childI) {
+					if (child == orphanId){
+						//add the item to the list of parents
+						parent.childSkills.push(orphan)
+						//remove the item from the list of orphans
+						orphans.splice(orphansL,1)
+					}//end if
+				})//end parent-child loop
+			}) //end parent loop
+		}//end orphan loop
+
+		//loop the parent list
+		//we want to see if any of the parents in the list are also children
+		while(parentsL--){
+			var p = parents[parentsL],
+				pId =p._id;
+			//foreach the parents
+			parents.forEach(function(adult, adultI) {
+				//foreach the children of the parents
+				var adultL = adult.children.length
+				while(adultL--) {
+					var teen = adult.children[adultL]
+					if (teen == p._id) {
+						//add the item to this parent's childskills
+						adult.childSkills.push(p);
+						//remove the item from the list of parents
+						parents.splice(parentsL, 1)
+					}//end if
+				//end parent child loop
+				}
+			})//end parent loop
+		}
+		//merge the parents and the orphans
+		var families = parents.concat(orphans);
+		res.send(families);
+	},
 	all: function (req, res) {
-		var search = {};
 		if(req.query.id) {
 			db.skills.findOne(
 				{
@@ -30,7 +106,13 @@ exports.query = {
 				res.send(items);
 			}
 		});
-
+	}, 
+	tree: function(req, res) {
+		console.log('tree query')
+		var query = exports.query.filters.all;
+		var results = exports.query.queryObj(query, function(err, items) {
+			exports.query.parentLoop(items, res);
+		})
 	}
 }
 

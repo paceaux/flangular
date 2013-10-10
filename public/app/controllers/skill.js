@@ -5,9 +5,10 @@ skillFactory = {
 			id: 0
 		}
 	},
-	skill : function(name, id, parentID, children){
+	skill : function(name, id, description, parentID, children){
 		this.name = name;
 		this.id = id;
+		this.description = description;
 		this.parentID = parentID;
 		this.children = [];
 	},
@@ -63,6 +64,13 @@ skillFactory = {
 			}).error(function(data, status, headers, config) {
 
 			});			
+		}, 
+		tree: function($scope, $http) {
+			$http({method: 'GET', url: '/skills/get/tree'}).success(function(data, status, headers, config) {
+				$scope.skills = data
+			}).error(function(data, status, headers, config) {
+
+			})
 		}
 	},
 	updateParent: function($scope, $http, parentID, childID) {
@@ -74,9 +82,10 @@ skillFactory = {
 		})
 	},
 	refresh: function($scope, $http){
-		$scope.skill.name = '';
+		$scope.skill = {};
+/*		$scope.skill.name = '';
 		$scope.skill.id = '';
-		$scope.skill.parentID =  '';
+		$scope.skill.parentID =  '';*/
 		skillFactory.queries.all($scope, $http)
 	},
 	getSkillNames: function($scope, $http) {
@@ -92,13 +101,36 @@ skillFactory = {
 			skillFactory.methods.del($scope, $http, skill );
 		}		
 	},
+	getTree: function($scope, $http) {
+		skillFactory.queries.tree($scope, $http);
+		$scope.hide = function (skill) {
+
+		}
+		$scope.update = function (skill){
+			skillFactory.methods.update($scope, $http, skill)
+		}	
+		$scope.delete = function (skill) {
+			if(window.confirm("Are you sure you want to delete the "+skill.name+" skill ?")){
+				if(skill.childSkills.length > 0) {
+					if(window.confirm("You're ok with the child subskills becoming orphans?")){
+						skillFactory.methods.del($scope, $http, skill );						
+					}
+				} else {
+					skillFactory.methods.del($scope, $http, skill );
+					
+				}
+				
+			}
+		}			
+	},
 	addSkill: function ($scope, $http) {
 		skillFactory.queries.all($scope, $http);
 		$scope.submit = function() {
 			var id = $scope.skill.id,
 				name = $scope.skill.name,
+				description = $scope.skill.description,
 				parentID = $scope.skill.parentID !== undefined ? $scope.skill.parentID : undefined;
-			var skill = new skillFactory.skill(name, id);
+			var skill = new skillFactory.skill(name, id, description);
 			skillFactory.methods.add($scope, $http, skill, parentID)
 		}	
 	}

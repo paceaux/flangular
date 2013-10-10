@@ -76,6 +76,16 @@
                                 <label class="contact__label contact__label--skype" for="contact__input--skype">Skype</label>
                                 <input type="text" class="contact__input contact__input--skype" id="contact__input--skype" data-ng-model="contact.skype"/>
                             </fieldset>
+                            <fieldset class="employee__fieldset employee__fieldset--organization organization">
+                                <legend class="employee__fieldset__legend">
+                                    Organizational info
+                                </legend>
+                                <label class="organization__label">Reports to</label>
+                                <select class="organization__select" ng-model="managerID" ng-options="employee.name.first for employee in employees">
+                                    <option value="">-- chose skill --</option>
+
+                                </select>
+                            </fieldset>
                             <fieldset class="employee__fieldset employee__fieldset--address address">
                                 <legend class="employee__fieldset__legend">Address</legend>
                                 <label class="address__label address__label--street" for="address__input--street">Street Address</label>
@@ -100,9 +110,6 @@
                         </form>
                     </article>
                 </div>
-                <aside class="content__sidebar sidebar sidebar--right">
-                    <h1>another sidebar</h1>
-                </aside>
             </section>
         </main>
         <footer class="globalFooter" ng-controller="globalIncludes">

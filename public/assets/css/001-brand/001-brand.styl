@@ -15,18 +15,18 @@ h1, h2, h3, h4, h5, h6, p
 
 h1, h2, h3, h4, h5, h6, strong, th
 	font-weight: bold
-h1
+h1, .h1
 	font-size: 1.618em
-h2
+h2, .h2
 	font-size: 1.25em
 	color: txtNavGray
-h3
+h3, .h3
 	font-size: 1.15em
 	color: txtBodyOrange
-h4
+h4, .h4
 	font-size: ptToEm(16)
 	color: txtBodyBlue
-h5, h6
+h5, h6, .h5, .h6
 	font-size: ptToEm(14)
 
 p
@@ -36,7 +36,7 @@ p
 header, main, footer
 	padding: 0 lofi()
 a
-	color: rgb(4, 124, 192)
+	color: txtLink
 	text-decoration: none
 	transitionize()
 	&:hover, &:focus, &:active
@@ -53,9 +53,9 @@ form
 fieldset, input, button, label, legend
 	transitionize()
 
-fieldset
+fieldset, .fieldset
 	border: .125em solid rgb(225, 225, 225)
-	border-radius: .125em
+	border-radius: borderRadiusSmall
 input, button
 	font-size: 1em
 	line-height: 1.618
@@ -63,7 +63,7 @@ input, button
 	height: 2em
 	margin: 0
 	border: .125em solid txtBodyBlack
-	border-radius: .25em
+	border-radius: borderRadiusLarge
 	&:hover, &:focus
 		outline: none
 		transitionize()
@@ -71,43 +71,32 @@ input, button
 [type="tel"],
 [type="search"],
 [type="email"],
-[type="password"]
-	color: liteGray
+[type="password"], .input
 	padding: 0 .25em
-	background: white
-	border: .125em solid rgba(4, 124, 192, 1)
-	&:hover
-		color: medGray1
-		border-color: rgba(5, 154, 240,1)
-	&:active, &:focus
-		color: txtBodyBlack
+	input()
 
-button
-	background: rgb(4, 124, 192)
-	color: white
+button, .button
 	height: 2em
-	border: .125em solid rgba(4, 124, 192, 1)
-	&:hover
-		background: rgb(5, 154, 240)
-		border-color: @background
+	button()
+
 
 table
-	border: .325em solid gray
+	border: .325em solid tableBorder
 	width: 100%
 	th, td
 		text-align: left
 	thead
-		border-bottom: .125em solid gray
+		border-bottom: .125em solid tableBorder
 		th
 			font-size: 1.25em
 	th
 		font-weight: bold
 	tbody
-		background: rgb(240, 245, 235)
+		background: tableBodyBackground
 		tr:nth-child(even)
-			background: rgba(240, 245, 235, .9)
+			background: tableRowEven
 		tr:nth-child(odd)
-			background: rgba(255, 255, 255, .5)
+			background: tableRowOdd
 .hidden
 	visibility: collapse
 

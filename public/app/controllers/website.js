@@ -13,15 +13,18 @@ website = {
 		var index = new website.page('Home', 'tasks.html'),
 			add = new website.page("Add Employee", 'add-employee.html'),
 			results = new website.page('Employee Contact', 'results.html'),
+			orgChart = new website.page("Org chart", "org-chart.html"),
 			contact = new website.page('Employee Addresses', 'address-list.html'),
 			addSkill = new website.page('Add Skill', 'add-skill.html'),
-			empSkills = new website.page("Skill List", 'employee-skills.html'),
-			skillList = new website.page('Skills', 'skill-list.html'),
+			skillList = new website.page('Skill List', 'skill-list.html'),
+			skillTree = new website.page('Skill Tree', 'skill-tree.html'),
 			three = new website.page('Three Col', 'layout.html'),
 			one = new website.page('One Column', 'one-col.html'), 
 			two = new website.page("Two Column", 'two-col.html');	
-		$scope.topNav = [empSkills, add, results, contact, addSkill, skillList];
-		$scope.skillNav = [addSkill, skillList];
+		$scope.skillNav = [skillTree, addSkill, skillList];
+		$scope.employeeNav = [add, orgChart, results, contact];
+		$scope.topNav = $scope.skillNav.concat($scope.employeeNav);
+
 		$scope.leftNav = [three, two, one ];	
 	}
 }

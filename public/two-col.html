@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Employee results page</title>
+        <title>Employeee employees page</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="assets/css/flex.main.css">
@@ -52,7 +52,7 @@
             <section class="main__content content">
                 <div class="content__wrap">
                     <header class="content__header">
-                        <h1 class="content__header__title">List of Employees</h1>
+                        <h1 class="content__header__title">List of Employeees</h1>
                     </header>
                     <article class="content__article" >
                         <table class="contactList" ng-controller="employeeFactory.getContactList">
@@ -68,27 +68,27 @@
                                 </tr>
                             </thead>
                             <tbody class="contactList__tbody" >
-                                <tr class="contactList__body__row person" data-ng-repeat="result in results | filter: {name.first : q.name.first} | filter:{name.last :  q.name.last} | orderBy: 'name.last'" data-id="{{result._id}}">
+                                <tr class="contactList__body__row person" data-ng-repeat="employee in employees | filter: {name.first : q.name.first} | filter:{name.last :  q.name.last} | orderBy: 'name.last'" data-id="{{employee._id}}">
                                     <td class="person__name person__name--first">
 
                                         
-                                        <input type="text" ng-model="result.name.first" />
+                                        <input type="text" ng-model="employee.name.first" />
                                     </td>
                                     <td class="person__name person__name--last">
-                                        <input type="text" ng-model="result.name.last" />
+                                        <input type="text" ng-model="employee.name.last" />
                                     </td>
                                     <td class="person__contact person__contact--email">
-                                        <input type="text" ng-model="result.contact.email" />
+                                        <input type="text" ng-model="employee.contact.email" />
                                     </td>
                                     <td class="person__contact person__contact--phone" >
-                                        <input type="text" ng-model="result.contact.phone" />
+                                        <input type="text" ng-model="employee.contact.phone" />
                                     </td>
                                     <td class="person__contact person__contact--skype" >
-                                        <input type="text" ng-model="result.contact.skype" />
+                                        <input type="text" ng-model="employee.contact.skype" />
                                     </td>
                                     <td class="person__controls">
-                                        <input type="button" ng-click="update(result)" value="update" />
-                                        <input type="button" ng-click="delete(result)" value="delete"/></td>
+                                        <input type="button" ng-click="update(employee)" value="update" />
+                                        <input type="button" ng-click="delete(employee)" value="delete"/></td>
                                 </tr>
                             </tbody>
                             <tfoot class="contactList__tfoot">

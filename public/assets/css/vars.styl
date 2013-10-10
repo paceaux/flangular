@@ -58,7 +58,9 @@ darkGray = #58585b
 
 //=== borders and backgrounds
 bgPromoSliderBlack = lightBlack
-
+borderInputBlack = lightBlack
+bgButtonBlue = rgb(4, 124, 192)
+borderButtonBlue = rgba(4, 124, 192, 1)
 makeTransparent(theColor)
 	rgba(theColor,.9)
 
@@ -71,7 +73,40 @@ txtHeaderBlue = darkBlue
 txtLinkBlue = #047CC0
 txtInputGray = medGray2
 txtNavGray = darkGray
+txtLink = rgb(4, 124, 192)
+txtLinkHover = txtLink
 
+
+//=== form colors
+inputBorder = .125em solid rgba(4, 124, 192, 1)
+inputHoverBorder = rgba(5, 154, 240,1)
+inputBackground = white
+inputColor = liteGray
+inputHoverColor = medGray1
+inputActiveColor = txtBodyBlack
+buttonColor = white
+buttonBorder = .125em solid rgba(4, 124, 192, 1)
+buttonBackground = rgb(4, 124, 192)
+buttonHoverBackground = rgb(5, 154, 240)
+
+
+//=== table colors
+tableBorder = gray
+tableBodyBackground = rgb(240, 245, 235)
+tableRowEven = rgba(240, 245, 235, .9)
+tableRowOdd = rgba(255, 255, 255, .5)
+//Unique UI elements
+treeHeadingColor = rgba(30, 30, 30, .7)
+treeHeadingTextShadow = 1px 0px 1px rgba(255, 255, 255, .9)
+treeHeadingBackground= rgba(255, 255, 255, .85)
+treeHeadingBoxShadow= 0em .125em .1875em rgba(90, 90, 90, .8)
+treeHeadingBorderRadius= .325rem
+
+treeListItemBackground= rgba(60, 130, 85, .1)
+
+//CSS3 effects
+borderRadiusSmall = .125em
+borderRadiusLarge = .25em
 //==========effects
 transitionize()
 	transition: all .3s ease-in-out
@@ -96,3 +131,22 @@ horizontalFlex()
 	betweenFlex()
 	flex-wrap: wrap
 
+
+//==========Complex styles
+//=====forms
+input()
+	color: inputColor
+	background: inputBackground
+	border: inputBorder
+	&:hover
+		color: inputHoverColor
+		border-color: inputHoverBorder
+	&:active, &:focus
+		color: inputActiveColor
+button()
+	background: buttonBackground
+	color: buttonColor
+	border: buttonBorder
+	&:hover
+		background: buttonHoverBackground
+		border-color: @background	

@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Employee results page</title>
+        <title>Employee employees page</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="assets/css/flex.main.css">
@@ -52,6 +52,9 @@
                                     <th class="contactList__th">
                                         <input class="contactList__th__filter" type="text" data-ng-model="q.name.last" placeholder="Last Name">
                                     </th>
+                                    <th>
+                                        Subordinates
+                                    </th>
                                     <th class="contactList__th" placeholder="Street">Street</th>
                                     <th class="contactList__th">City</th>
                                     <th class="contactList__th">State</th>
@@ -60,36 +63,13 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody class="contactList__tbody" >
-                                <tr ng-repeat="result in results | filter: {name.first : q.name.first} | filter:{name.last :  q.name.last} | orderBy: 'name.last'" class="contactList__body__row person" data-id="{{result._id}}">
-                                    <td class="person__name person__name--first">
-                                        {{result.name.first}}
-                                    </td>
-                                    <td class="person__name person__name--last">
-                                        {{result.name.last}}
-                                    </td>
-                                    <td class="person__contact person__contact--street">
-                                        <input type="text" ng-model="result.address.street" />
-                                    </td>
-                                    <td class="person__contact person__contact--city" >
-                                        <input type="text" ng-model="result.address.city" />
-                                    </td>
-                                    <td class="person__contact person__contact--state" >
-                                        <input type="text" ng-model="result.address.state" />
-                                    </td>
-                                    <td class="person__contact person__contact--zip" >
-                                        <input type="text" ng-model="result.address.zip" />
-                                    </td>
-                                    <td class="person__controls">
-                                        <input type="button" ng-click="update(result)" value="update"/>
-                                        <input type="button" ng-click="delete(result)" value="delete"/>
-                                    </td>
-                                </tr>
-                            </tbody>
                             <tfoot class="contactList__tfoot">
                                 <tr class="contactList__tfoot__row">
                                     <th class="contactList__th">First Name</th>
                                     <th class="contactList__th">Last Name</th>
+                                    <th>
+                                        subordinates
+                                    </th>
                                     <th class="contactList__th">Street</th>
                                     <th class="contactList__th">City</th>
                                     <th class="contactList__th">State</th>
@@ -97,6 +77,36 @@
                                     <th></th>
                                 </tr>
                             </tfoot>
+                            <tbody class="contactList__tbody" >
+                                <tr ng-repeat="employee in employees | filter: {name.first : q.name.first} | filter:{name.last :  q.name.last} | orderBy: 'name.last'" class="contactList__body__row person" data-id="{{employee._id}}">
+                                    <td class="person__name person__name--first">
+                                        {{employee.name.first}}
+                                    </td>
+                                    <td class="person__name person__name--last">
+                                        {{employee.name.last}}
+                                    </td>
+                                    <td>
+                                        <p ng-repeat="subordinate in employee.subordinateObjs">{{subordinate.name.first}}</p>
+                                    </td>
+                                    <td class="person__contact person__contact--street">
+                                        <input type="text" ng-model="employee.address.street" />
+                                    </td>
+                                    <td class="person__contact person__contact--city" >
+                                        <input type="text" ng-model="employee.address.city" />
+                                    </td>
+                                    <td class="person__contact person__contact--state" >
+                                        <input type="text" ng-model="employee.address.state" />
+                                    </td>
+                                    <td class="person__contact person__contact--zip" >
+                                        <input type="text" ng-model="employee.address.zip" />
+                                    </td>
+                                    <td class="person__controls">
+                                        <input type="button" ng-click="update(employee)" value="update"/>
+                                        <input type="button" ng-click="delete(employee)" value="delete"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+
                         </table>
                     </article>
                 </div>

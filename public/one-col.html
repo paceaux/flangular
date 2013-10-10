@@ -54,35 +54,37 @@
                                     </th>
                                     <th class="contactList__th" placeholder="Street">Street</th>
                                     <th class="contactList__th">City</th>
-                                    <th class="contactList__th">State</th>
+                                    <th class="contactList__th">
+                                        <input class="contactList__th__filter" type="text" data-ng-model="q.address.state" placeholder="State">
+                                    </th>
                                     <th class="contactList__th">ZIP</th>
 
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody class="contactList__tbody" >
-                                <tr ng-repeat="result in results | filter: {name.first : q.name.first} | filter:{name.last :  q.name.last} | orderBy: 'name.last'" class="contactList__body__row person" data-id="{{result._id}}">
+                                <tr ng-repeat="employee in employees | filter: {name.first : q.name.first} | filter:{name.last :  q.name.last} | q.address.state | orderBy: 'name.last'" class="contactList__body__row person" data-id="{{employee._id}}">
                                     <td class="person__name person__name--first">
-                                        {{result.name.first}}
+                                        {{employee.name.first}}
                                     </td>
                                     <td class="person__name person__name--last">
-                                        {{result.name.last}}
+                                        {{employee.name.last}}
                                     </td>
                                     <td class="person__contact person__contact--street">
-                                        <input type="text" ng-model="result.address.street" />
+                                        <input type="text" ng-model="employee.address.street" />
                                     </td>
                                     <td class="person__contact person__contact--city" >
-                                        <input type="text" ng-model="result.address.city" />
+                                        <input type="text" ng-model="employee.address.city" />
                                     </td>
                                     <td class="person__contact person__contact--state" >
-                                        <input type="text" ng-model="result.address.state" />
+                                        <input type="text" ng-model="employee.address.state" />
                                     </td>
                                     <td class="person__contact person__contact--zip" >
-                                        <input type="text" ng-model="result.address.zip" />
+                                        <input type="text" ng-model="employee.address.zip" />
                                     </td>
                                     <td class="person__controls">
-                                        <input type="button" ng-click="update(result)" value="update"/>
-                                        <input type="button" ng-click="delete(result)" value="delete"/>
+                                        <input type="button" ng-click="update(employee)" value="update"/>
+                                        <input type="button" ng-click="delete(employee)" value="delete"/>
                                     </td>
                                 </tr>
                             </tbody>

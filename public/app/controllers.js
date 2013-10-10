@@ -1,30 +1,38 @@
 
 employeeFactory = {
 	filters: {
-
+		nameOnly: {
+			subordinates:0,
+			contact: 0,
+			address: 0
+		}
 	},
 	methods: {
-		add: function($scope, $http, person) {
+		add: function($scope, $http, person, managerID) {
 			$http({method: 'POST', url: '/employees/add', data: person}).success(function(data,status,headers,config) {
 				alert('posted successfully');
-				employeeFactory.refresh($scope);
+				employeeFactory.refresh($scope, $http);
+				employeeFactory.queries.all($scope, $http);
+				if (managerID !== undefined) {
+					console.log('has manager')
+					employeeFactory.updateParent($scope, $http, managerID , data._id);
+				} 
 			}).error(function(data, status, headers, config) {
 
 			});
 		}, 
 		update: function($scope, $http, person) {
 			$http({method: 'PUT', url: '/employees/put?id='+person._id, data: person}).success(function(data, status, headers, config) {
-				console.log('updated')
 			}).error(function(data, status, headers, config) {
 
 			})	
 		}, 
 		del: function($scope, $http, person) {
 			$http({method: 'DELETE', url: '/employees/del?id='+person._id}).success(function(data, status, headers, config) {
-			  	var length = $scope.results.length;
+			  	var length = $scope.employees.length
 			  	while (length--) {
-			  		if($scope.results[length]._id === person._id) {
-			  			$scope.results.splice(length, 1);
+			  		if( $scope.employees[length]._id === person._id) {
+			  			$scope.employees.splice(length, 1)
 			  		}
 			  	}
 			  }).
@@ -37,15 +45,35 @@ employeeFactory = {
 	queries: {
 		all: function ($scope, $http) {
 			$http({method: 'GET', url: '/employees/get'}).success(function(data, status, headers, config) {
-				$scope.results = data;
-			}).
-			error(function(data, status, headers, config) {
+				$scope.employees = data;
+			}).error(function(data, status, headers, config) {
 
 			});
 		},
 		filtered: function($scope, $http, filter) {
+			$http({method: 'GET', url: '/employees/get/filter', data:filter}).success(function(data,status, headers, config) {
+				$scope.employees = data;
+			}).error(function(data, status, headers, config) {
 
+			});	
+		}, 
+		tree: function ($scope, $http) {
+			$http({method: 'GET', url: '/employees/get/tree'}).success(function(data, status, headers, config) {
+				$scope.employees = data;
+			}).error(function(data, status, headers, config) {
+
+			})
 		}
+	},
+	updateParent: function($scope, $http, managerID, childID){
+		console.log('updating parent');
+		managerID.subordinates.push(childID);
+		console.log(managerID)
+		$http({method: 'PUT', url: '/employees/put?id='+managerID._id, data:managerID}).success(function(data, status, headers, config) {
+			console.log('updated'+managerID.name.first)
+		}).error(function(data, status, headers, config) {
+
+		})
 	},
 	refresh: function($scope) {
 		$scope.name = {};
@@ -56,15 +84,17 @@ employeeFactory = {
 
 	},
 	addEmployee: function ($scope, $http) {
+		employeeFactory.queries.all($scope, $http);
 		skillFactory.getSkillNames($scope, $http);
 		$scope.submit = function() {
-			var person = {};
+			var person = {},
+				managerID = $scope.managerID !== undefined ? $scope.managerID : undefined;
 			person.name = $scope.name;
 			person.contact = $scope.contact;
 			person.address = $scope.address;
 			person.skills = $scope.skills;
-			console.log (person.skills);
-			employeeFactory.methods.add($scope, $http, person)
+			person.subordinates = [];
+			employeeFactory.methods.add($scope, $http, person, managerID)
 		}
 	}, 
 	getContactList: function ($scope, $http) {
@@ -74,6 +104,30 @@ employeeFactory = {
 		}
 		$scope.update = function (person) {
 			employeeFactory.methods.update($scope, $http, person);
+		}
+	}, 
+	getEmployeeNames : function ($scope, $http) {
+		var filter = employeeFactory.filters.nameOnly;
+		employeeFactory.queries.filtered($scope, $http, filter);
+	},
+	getTree: function($scope, $http) {
+		employeeFactory.queries.tree($scope, $http);
+		$scope.update = function (employee){
+			employeeFactory.methods.update($scope, $http, skill)
+		}	
+		$scope.delete = function (employee) {
+			if(window.confirm("Are you sure you want to delete  "+employee.name.first+" "+employee.name.last+" ?")){
+				console.log(employee)
+				if(employee.subordinates.length > 0) {
+					if(window.confirm("You're ok with the employees who report becoming orphans?")){
+						employeeFactory.methods.del($scope, $http, employee );						
+					}
+				} else {
+					employeeFactory.methods.del($scope, $http, employee );
+					
+				}
+				
+			}
 		}
 	}
 
@@ -121,9 +175,10 @@ function people($scope) {
 			id: 0
 		}
 	},
-	skill : function(name, id, parentID, children){
+	skill : function(name, id, description, parentID, children){
 		this.name = name;
 		this.id = id;
+		this.description = description;
 		this.parentID = parentID;
 		this.children = [];
 	},
@@ -179,6 +234,13 @@ function people($scope) {
 			}).error(function(data, status, headers, config) {
 
 			});			
+		}, 
+		tree: function($scope, $http) {
+			$http({method: 'GET', url: '/skills/get/tree'}).success(function(data, status, headers, config) {
+				$scope.skills = data
+			}).error(function(data, status, headers, config) {
+
+			})
 		}
 	},
 	updateParent: function($scope, $http, parentID, childID) {
@@ -190,9 +252,10 @@ function people($scope) {
 		})
 	},
 	refresh: function($scope, $http){
-		$scope.skill.name = '';
+		$scope.skill = {};
+/*		$scope.skill.name = '';
 		$scope.skill.id = '';
-		$scope.skill.parentID =  '';
+		$scope.skill.parentID =  '';*/
 		skillFactory.queries.all($scope, $http)
 	},
 	getSkillNames: function($scope, $http) {
@@ -208,13 +271,36 @@ function people($scope) {
 			skillFactory.methods.del($scope, $http, skill );
 		}		
 	},
+	getTree: function($scope, $http) {
+		skillFactory.queries.tree($scope, $http);
+		$scope.hide = function (skill) {
+
+		}
+		$scope.update = function (skill){
+			skillFactory.methods.update($scope, $http, skill)
+		}	
+		$scope.delete = function (skill) {
+			if(window.confirm("Are you sure you want to delete the "+skill.name+" skill ?")){
+				if(skill.childSkills.length > 0) {
+					if(window.confirm("You're ok with the child subskills becoming orphans?")){
+						skillFactory.methods.del($scope, $http, skill );						
+					}
+				} else {
+					skillFactory.methods.del($scope, $http, skill );
+					
+				}
+				
+			}
+		}			
+	},
 	addSkill: function ($scope, $http) {
 		skillFactory.queries.all($scope, $http);
 		$scope.submit = function() {
 			var id = $scope.skill.id,
 				name = $scope.skill.name,
+				description = $scope.skill.description,
 				parentID = $scope.skill.parentID !== undefined ? $scope.skill.parentID : undefined;
-			var skill = new skillFactory.skill(name, id);
+			var skill = new skillFactory.skill(name, id, description);
 			skillFactory.methods.add($scope, $http, skill, parentID)
 		}	
 	}
@@ -233,15 +319,18 @@ function people($scope) {
 		var index = new website.page('Home', 'tasks.html'),
 			add = new website.page("Add Employee", 'add-employee.html'),
 			results = new website.page('Employee Contact', 'results.html'),
+			orgChart = new website.page("Org chart", "org-chart.html"),
 			contact = new website.page('Employee Addresses', 'address-list.html'),
 			addSkill = new website.page('Add Skill', 'add-skill.html'),
-			empSkills = new website.page("Skill List", 'employee-skills.html'),
-			skillList = new website.page('Skills', 'skill-list.html'),
+			skillList = new website.page('Skill List', 'skill-list.html'),
+			skillTree = new website.page('Skill Tree', 'skill-tree.html'),
 			three = new website.page('Three Col', 'layout.html'),
 			one = new website.page('One Column', 'one-col.html'), 
 			two = new website.page("Two Column", 'two-col.html');	
-		$scope.topNav = [empSkills, add, results, contact, addSkill, skillList];
-		$scope.skillNav = [addSkill, skillList];
+		$scope.skillNav = [skillTree, addSkill, skillList];
+		$scope.employeeNav = [add, orgChart, results, contact];
+		$scope.topNav = $scope.skillNav.concat($scope.employeeNav);
+
 		$scope.leftNav = [three, two, one ];	
 	}
 }/*! tz-skills-app - v0.1.0 -  */

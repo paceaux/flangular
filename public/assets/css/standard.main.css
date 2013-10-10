@@ -2,11 +2,11 @@ html{font-size:1em;background:#2e2f32}
 body{color:#231f20;font-size:1em;line-height:1.618;padding:0 0 0 0;background:#fff}
 h1,h2,h3,h4,h5,h6,p{color:#231f20;line-height:1.618}
 h1,h2,h3,h4,h5,h6,strong,th{font-weight:bold}
-h1{font-size:1.618em}
-h2{font-size:1.25em;color:#58585b}
-h3{font-size:1.15em;color:#f27321}
-h4{font-size:1.375em;color:#1a3d6e}
-h5,h6{font-size:1.1875em}
+h1,.h1{font-size:1.618em}
+h2,.h2{font-size:1.25em;color:#58585b}
+h3,.h3{font-size:1.15em;color:#f27321}
+h4,.h4{font-size:1.375em;color:#1a3d6e}
+h5,h6,.h5,.h6{font-size:1.1875em}
 p{color:#231f20;margin:.618em 0}
 header,main,footer{padding:0 .618em}
 a{color:#047cc0;text-decoration:none;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;-ms-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
@@ -14,14 +14,14 @@ a:hover,a:focus,a:active{text-decoration:underline;-webkit-transition:all .3s ea
 legend{font-size:1em;line-height:1}
 form{border:none;outline:none;padding:0 .25em}
 fieldset,input,button,label,legend{-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;-ms-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
-fieldset{border:.125em solid #e1e1e1;-webkit-border-radius:.125em;border-radius:.125em}
+fieldset,.fieldset{border:.125em solid #e1e1e1;-webkit-border-radius:.125em;border-radius:.125em}
 input,button{font-size:1em;line-height:1.618;padding:0 .25em;height:2em;margin:0;border:.125em solid #231f20;-webkit-border-radius:.25em;border-radius:.25em;}
 input:hover,button:hover,input:focus,button:focus{outline:none;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;-ms-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
-[type="text"],[type="tel"],[type="search"],[type="email"],[type="password"]{color:#bbbdc0;padding:0 .25em;background:#fff;border:.125em solid #047cc0;}
-[type="text"]:hover,[type="tel"]:hover,[type="search"]:hover,[type="email"]:hover,[type="password"]:hover{color:#939597;border-color:#059af0}
-[type="text"]:active,[type="tel"]:active,[type="search"]:active,[type="email"]:active,[type="password"]:active,[type="text"]:focus,[type="tel"]:focus,[type="search"]:focus,[type="email"]:focus,[type="password"]:focus{color:#231f20}
-button{background:#047cc0;color:#fff;height:2em;border:.125em solid #047cc0;}
-button:hover{background:#059af0;border-color:#059af0}
+[type="text"],[type="tel"],[type="search"],[type="email"],[type="password"],.input{padding:0 .25em;color:#bbbdc0;background:#fff;border:.125em solid #047cc0;}
+[type="text"]:hover,[type="tel"]:hover,[type="search"]:hover,[type="email"]:hover,[type="password"]:hover,.input:hover{color:#939597;border-color:#059af0}
+[type="text"]:active,[type="tel"]:active,[type="search"]:active,[type="email"]:active,[type="password"]:active,.input:active,[type="text"]:focus,[type="tel"]:focus,[type="search"]:focus,[type="email"]:focus,[type="password"]:focus,.input:focus{color:#231f20}
+button,.button{height:2em;background:#047cc0;color:#fff;border:.125em solid #047cc0;}
+button:hover,.button:hover{background:#059af0;border-color:#059af0}
 table{border:.325em solid #808080;width:100%;}
 table th,table td{text-align:left}
 table thead{border-bottom:.125em solid #808080;}

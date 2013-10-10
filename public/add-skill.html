@@ -68,6 +68,12 @@
                                 </label>
                                 <input type="text" class="skillname__id" id="skillname__id" ng-model="skill.id" />
                             </fieldset>
+                            <fieldset class="skill__fieldset skill__fieldset--description description">
+                                <label for="skillname__desc">
+                                    Description
+                                </label>
+                                <input type="text" class="skillname__desc" id="skillname__desc" ng-model="skill.description" />
+                            </fieldset>
                             <fieldset class="skill__fieldset skill__fieldset--related related" >
                                 <label class="related__label">Parent Skill</label>
                                 <select id="parent__skill" class="related__select" ng-model="skill.parentID" ng-options="p.name group by p.parent for p in parentIDs">
