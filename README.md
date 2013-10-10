@@ -4,42 +4,43 @@ Author: Frank M. Taylor
 
 License: copyright 2013 Frank M. Taylor and Alex Klock. All rights reserved
 
-## About the Application
-An HR application which can add employees, create an org chart, add skills for those employees, and even produce a "skill tree". 
-
-## Technical Description:
- An app running on node.js, powered by mongoDB, delivered with angular.js, built by Grunt.js, designed with Stylus and laid-out with Flexbox. 
+## Technical Overview
+ An An HR application running on node.js, powered by mongoDB, delivered with angular.js, built by Grunt.js, designed with Stylus and laid-out with Flexbox. 
 
 ### Node
-	+ The server runs on port 8895 of your localhost
-	+ The entire application is one giant API.
-	+ the files for node are in root/app
++ The server runs on port 8895 of your localhost
++ The entire application is one giant REST API.
++ the files for node are in root/app
+
 ### Mongo
-	it creates two collections: skills and employees
+ it creates two collections: skills and employees
+
 ### angular
-	four controllers (only using three of em)
-	+ controller for website functionality. just handles the navigation elements, logo. 
-	+ controller for employees. add, edit, remove, and get employee information
-	+ controller for name. not currently in use
+four controllers (only using three of em)
+ + controller for website functionality. just handles the navigation elements, logo. 
+ + controller for employees. add, edit, remove, and get employee information
+ + controller for name. not currently in use
+
 ### Grunt
-	+ Grunt builds the Stylus into two stylesheets: one that uses flexbox and one that uses the regular layout
-	+ grunt also concatenates the angular controller files into one controller
-	+ grunt concatenates jquery and jqueryUI
-	+ grunt watches the /public folder for changes to HTML, .styl, or JS and runs all of the afformentioned tasks
+ + Grunt builds the Stylus into two stylesheets: one that uses flexbox and one that uses the regular layout
+ + grunt also concatenates the angular controller files into one controller
+ + grunt concatenates jquery and jqueryUI
+ + grunt watches the `/public` folder for changes to `html`, `.styl`, or `.js` and runs all of the afformentioned tasks
+
 ### Stylus
-	+  every stylus file is organized by what it does: brand, layout, component
-	+ In each folder there's an index.styl file. it's importing all of the styl files into it
-	+ the master styl file is an import of the index.styls
-	+ at the root of my CSS folder is a vars.styl file. this is where much of my brand information resides
-	+ nib does all my CSS3 fallbacks
-	+ if I do a layout in flexbox, it's labeled as such
+ +  every stylus file is organized by what it does: brand, layout, component
+ + In each folder there's an `index.styl` file. it's importing all of the styl files into it
+ + the master styl file is an import of the `index.styl`s
+ + at the root of my CSS folder is a vars.styl file. this is where much of my brand information resides
+ + nib does all my CSS3 fallbacks
+ + if I do a layout in flexbox, it's labeled as such
 
 ## Getting Started
-	install Node.js
-	install npm (if it didn't come w/ node)
-	install mongo DB
-	run `node server.js` from the command line
-	run `grunt` from the command line, while in the root folder
+1 install Node.js
+2 install npm (if it didn't come w/ node)
+3 install mongo DB
+4 run `node server.js` from the command line
+5 run `grunt` from the command line, while in the root folder
 
 ## DEVELOPMENT NOTES:
 
