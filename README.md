@@ -5,7 +5,7 @@ Author: Frank M. Taylor
 License: copyright 2013 Frank M. Taylor and Alex Klock. All rights reserved
 
 ## About the Application
-:An HR application which can add employees, create an org chart, add skills for those employees, and even produce a "skill tree". 
+An HR application which can add employees, create an org chart, add skills for those employees, and even produce a "skill tree". 
 
 ## Technical Description:
  An app running on node.js, powered by mongoDB, delivered with angular.js, built by Grunt.js, designed with Stylus and laid-out with Flexbox. 
