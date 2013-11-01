@@ -3,6 +3,9 @@ html
 body
 	width: 80%
 	margin: 0 auto
+header, .main, footer
+	padding: 0 0
+
 .globalHeader
 	width: 100%
 	&__branding
@@ -24,26 +27,40 @@ body
 .main
 	width: 98%
 	clear:both
-	&::before
-		content: ''
-		display: block
+	min-height: 20em
+	&::before, &::after
+		content: " "
+		display: table
 	&::after
-		visibility: hidden;
-		display: block;
-		height: 0;
-		clear: both;
+		display: both
+	&__content
+		width: 100%
+	&__sidebar
+		+ .main__content
+			width: 80%
+
 .globalFooter
 	clear:both
+	width: 100%
+	height: 8em
 	&__wrapper
 		width: 98%
+	&__title, &__legalNotice, &__contact
+		width: 33%
+		display: inline-block
 	&__title
 		float:left
 	&__contact
 		float:right
+		text-align:right
+		> a
+			display: block
 .sidebar
 	float:left
 	width: 20%
 	height: 100%
+	&--right
+		float:right
 .nav
 	display:block
 	ul, li
@@ -76,9 +93,12 @@ body
 					padding-left: .618em
 .content
 	float:right 
-	width: 80%
 	&__wrap
 		height: 100%
-		width: 80%
+		width: 100%
+	&__sidebar
+		+ .content__wrap
+			width: 80%
+
 
 

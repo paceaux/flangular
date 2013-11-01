@@ -22,7 +22,7 @@ body
 		height: 4rem
 		&__siteTitle, &__subTitle
 			margin: 0
-	&__search
+	&__search, &__globalNav, &__auxNav
 		order: 2
 		flex-grow: 0
 		display: flex
@@ -42,7 +42,10 @@ body
 		&__submit
 			order: 2
 			flex-grow:1
-
+	&__globalNav, &__auxNav
+		height: 3rem
+		align-items: flex-start
+		font-size: .9em
 	&__topNav
 		order: 3
 		flex-basis: 100%
